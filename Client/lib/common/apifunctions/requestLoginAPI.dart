@@ -30,7 +30,7 @@ Future<LoginModel> requestLoginAPI(BuildContext context, String username, String
     showDialogSingleButton(context, "Log in succesfull", response.body, "OK");
   
     saveCurrentLogin(responseJson);
-    //Navigator.of(context).pushReplacementNamed('/HomeScreen');
+    Navigator.of(context).pushReplacementNamed('/HomeScreen');
 
     return LoginModel.fromJson(responseJson);
   } else {

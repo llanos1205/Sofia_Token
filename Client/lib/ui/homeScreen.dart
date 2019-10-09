@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'dart:io';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:splash_tokenauth/common/apifunctions/getDataJango.dart';
 import 'package:splash_tokenauth/common/platform/platformScaffold.dart';
 import 'package:splash_tokenauth/common/widgets/basicDrawer.dart';
 import 'package:splash_tokenauth/common/functions/getuser.dart';
@@ -47,9 +48,19 @@ class _HomeScreenState extends State<HomeScreen> {
               Text(myuser),
               RaisedButton(
                         onPressed: () {
-                          
+                        getDataJango(context,0);
                         },
-                        child: Text("LOGIN",
+                        child: Text("recuperar autenticado",
+                            style: TextStyle(color: Colors.white,
+                                fontSize: 22.0)
+                        ),
+                      color: Colors.blue,
+                    ),
+                    RaisedButton(
+                        onPressed: () {
+                        getDataJango(context,1);
+                        },
+                        child: Text("sin autenticar",
                             style: TextStyle(color: Colors.white,
                                 fontSize: 22.0)
                         ),
