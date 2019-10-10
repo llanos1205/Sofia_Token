@@ -9,7 +9,7 @@ class LoginModel {
   LoginModel.fromJson(Map<String, dynamic> json)
       : userName = json['name'],
         //token = json['token'],
-        token=json['access'],
+        token=json['token'],
         email = json['email'],
         userId = json['pk'];
 

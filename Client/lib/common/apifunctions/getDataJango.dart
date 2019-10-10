@@ -12,7 +12,7 @@ import 'package:splash_tokenauth/common/functions/showDialogSingleButton.dart';
 
 
 Future getDataJango(BuildContext context,int i) async {
-  final url = "http://192.168.0.184:8000/core_app/hello/";
+  final url = "http://192.168.92.30:8000/core_app/hello/";
 
   var token;
 

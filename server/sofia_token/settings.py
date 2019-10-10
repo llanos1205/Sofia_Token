@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+import datetime
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +25,7 @@ SECRET_KEY = 'b5t#$ulax7c1$qt#mex@172rx+)=j)&re%tw98lr_u7wte1n^7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.92.29','127.0.0.1','192.168.0.184']
+ALLOWED_HOSTS = ['192.168.92.30','127.0.0.1','192.168.0.184']
 
 
 # Application definition
@@ -105,7 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME':datetime.timedelta(minutes=5),}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
