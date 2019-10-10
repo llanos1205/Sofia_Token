@@ -12,7 +12,7 @@ import 'package:splash_tokenauth/common/functions/showDialogSingleButton.dart';
 
 
 Future getDataJango(BuildContext context,int i) async {
-  final url = "http://192.168.92.29:8000/core_app/hello/";
+  final url = "http://192.168.0.184:8000/core_app/hello/";
 
   var token;
 
@@ -26,7 +26,7 @@ Future getDataJango(BuildContext context,int i) async {
         response = await http.Client().get(
       url,
       
-      headers: {'Authorization': "Bearer  $token"},
+      headers: {'Authorization': "Bearer $token"},
     );
     }
   else

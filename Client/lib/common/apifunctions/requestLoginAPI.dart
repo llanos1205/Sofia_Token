@@ -9,7 +9,7 @@ import 'dart:convert';
 import 'package:splash_tokenauth/model/json/loginModel.dart';
 
 Future<LoginModel> requestLoginAPI(BuildContext context, String username, String password) async {
-  final url = "http://192.168.92.29:8000/api/token/";
+  final url = "http://192.168.0.184:8000/api/token/";
 
   Map<String, String> body = {
     'username': username,

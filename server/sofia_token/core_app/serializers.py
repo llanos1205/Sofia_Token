@@ -18,6 +18,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['name'] = self.user.username
         data['email']=self.user.email
         data['pk']=self.user.pk
+        #data['token']=data['access']
         return data
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
