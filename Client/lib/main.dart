@@ -19,10 +19,7 @@ class MyApp extends StatelessWidget {
         "/LoginScreen": (BuildContext context) => LoginScreen(),
       },
       home:
-      SplashScreen(),
-
-
-    );
-  }
-
+      SplashScreen()
+      );
+      }
 }
