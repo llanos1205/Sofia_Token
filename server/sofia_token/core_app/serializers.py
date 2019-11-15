@@ -1,6 +1,8 @@
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from rest_framework import serializers
+from sofia_token.core_app import models
+from django.contrib.auth.models import User
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
@@ -22,3 +24,16 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         return data
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
+
+class ItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=models.Item
+        fields="__all__"
+class OrdenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=models.Orden
+        fields="__all__"
+class Orden_n_ItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=models.Orden_n_Item
+        fields="__all__"
