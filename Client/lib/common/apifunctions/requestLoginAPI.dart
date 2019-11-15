@@ -7,10 +7,10 @@ import 'package:splash_tokenauth/common/functions/showDialogSingleButton.dart';
 import 'dart:convert';
 import 'WebClient.dart';
 import 'package:splash_tokenauth/model/json/loginModel.dart';
-
+import 'Globals.dart';
 Future<LoginModel> requestLoginAPI(BuildContext context, String username, String password) async {
-  final url = "http://192.168.92.24:8000/api/token/";
-
+  
+  
   Map<String, String> body = {
     'username': username,
     'password': password,
@@ -23,7 +23,7 @@ Future<LoginModel> requestLoginAPI(BuildContext context, String username, String
   //       'Content-Type': 'application/json',
   //     },
   // );
-  final jsonbody=await  response.post(url, jsonEncode(body), {
+  final jsonbody=await  response.post(response.setPath('/api/token/'), jsonEncode(body), {
     'Content-Type': 'application/json'
   });
 
