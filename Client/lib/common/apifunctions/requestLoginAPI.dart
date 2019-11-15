@@ -5,36 +5,38 @@ import 'package:http/http.dart' as http;
 import 'package:splash_tokenauth/common/functions/saveCurrentLogin.dart';
 import 'package:splash_tokenauth/common/functions/showDialogSingleButton.dart';
 import 'dart:convert';
-
+import 'WebClient.dart';
 import 'package:splash_tokenauth/model/json/loginModel.dart';
 
 Future<LoginModel> requestLoginAPI(BuildContext context, String username, String password) async {
-  final url = "http://192.168.92.12:8000/api/token/";
+  final url = "http://192.168.92.24:8000/api/token/";
 
   Map<String, String> body = {
     'username': username,
     'password': password,
   };
-
-  final http.Response response = await http.Client().post(
-    url,
-    body: jsonEncode(body),
-    headers: {
-        'Content-Type': 'application/json',
-      },
-  );
+  WebClient response= new WebClient();
+  // final http.Response response = await http.Client().post(
+  //   url,
+  //   body: jsonEncode(body),
+  //   headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  // );
+  final jsonbody=await  response.post(url, jsonEncode(body), {
+    'Content-Type': 'application/json'
+  });
 
   if (response.statusCode == 200) {
-    final responseJson = json.decode(response.body);
-    var user = new LoginModel.fromJson(responseJson);
-    showDialogSingleButton(context, "Log in succesfull", response.body, "OK");
+    final responseJson = json.decode(jsonbody);
+    showDialogSingleButton(context, "Log in succesfull", jsonbody, "OK");
   
     saveCurrentLogin(responseJson);
     Navigator.of(context).pushReplacementNamed('/HomeScreen');
 
     return LoginModel.fromJson(responseJson);
   } else {
-    final responseJson = json.decode(response.body);
+    final responseJson = json.decode(jsonbody);
 
     saveCurrentLogin(responseJson);
     showDialogSingleButton(context, "Unable to Login", "You may have supplied an invalid 'Username' / 'Password' combination. Please try again or contact your support representative.", "OK");
