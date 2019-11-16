@@ -32,7 +32,8 @@ Future<List<Widget>> getItems(BuildContext context) async {
                 Image.network(item['imagen']),
                 Text(item["nombre"]),
               ],
-            )),
+            )
+        ),
       ),
     );
   }

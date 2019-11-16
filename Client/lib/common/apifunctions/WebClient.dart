@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class WebClient {
   WebClient();
-  String url = "http://192.168.0.184";
+  String url = "http://10.255.171.95";
   String port = "8000";
   String setPath(String path) {
     return url + ":" + port + path;

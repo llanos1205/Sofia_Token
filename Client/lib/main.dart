@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         "/DetailScreen": (BuildContext context) => DetailScreen(),
       },
       home:
+      
       SplashScreen()
       );
       }
