@@ -25,7 +25,7 @@ SECRET_KEY = 'b5t#$ulax7c1$qt#mex@172rx+)=j)&re%tw98lr_u7wte1n^7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.255.171.95']
+ALLOWED_HOSTS = ['192.168.0.184']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'sofia_token.core_app',
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework_filters',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +88,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+    'DEFAULT_FILTER_BACKENDS': (
+        'rest_framework_filters.backends.RestFrameworkFilterBackend',
+    ),
 }
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

@@ -2,3 +2,4 @@ django>=2.2.6
 djangorestframework>=3.10.3
 djangorestframework_simplejwt>=4.3
 httpie>=1.0.3
+djangorestframework-filters>=0.11.1

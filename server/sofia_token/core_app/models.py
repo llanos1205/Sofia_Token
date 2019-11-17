@@ -14,6 +14,7 @@ class Orden(models.Model):
     estado=models.TextField(max_length=800)
     cliente=models.ForeignKey(User,on_delete=models.CASCADE)
     fecha=models.DateTimeField()
+    items=models.ManyToManyField(Item,related_name='items',through='Orden_n_Item',through_fields=('orden','producto'))
     class Meta:
         managed=True
         db_table="Orden"

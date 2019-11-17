@@ -1,3 +1,6 @@
+import 'package:core_movile_app/operations/restCarrito.dart';
+import 'package:core_movile_app/ui/carritoScreen.dart';
+import 'package:core_movile_app/ui/homeScreen.dart';
 import 'package:core_movile_app/ui/loginScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +48,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  
 
   void _incrementCounter() {
     setState(() {
@@ -54,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+
     });
   }
 
@@ -95,6 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             FlatButton(
               child: Text("login"),
+              color: Colors.blue,
               onPressed:(){
                 Navigator.push(
                   context, 
@@ -102,18 +106,23 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
               } ,
               ),
-            FlatButton(child: Text("Home"),
+            FlatButton(
+              child: Text("Home"),
+              color: Colors.blue,
               onPressed:(){
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context)=>LoginScreen())
+                  MaterialPageRoute(builder: (context)=>HomeScreen())
                   );
               } ,),
-            FlatButton(child: Text("Carrito"),
-              onPressed:(){
+            FlatButton(
+              child: Text("Carrito"),
+              color: Colors.blue,
+              onPressed:()async {
+                dynamic r=await getOrden();
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context)=>LoginScreen())
+                  MaterialPageRoute(builder: (context) =>CarritoScreen(r))
                   );
               } ,),
           ],

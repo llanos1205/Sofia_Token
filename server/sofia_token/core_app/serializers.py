@@ -29,11 +29,19 @@ class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model=models.Item
         fields="__all__"
-class OrdenSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=models.Orden
-        fields="__all__"
 class Orden_n_ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model=models.Orden_n_Item
         fields="__all__"
+class Orden_n_ItemSerializer2(serializers.ModelSerializer):
+    class Meta:
+        model=models.Orden_n_Item
+        fields=['id','cantidad','producto']
+        depth=1
+
+class OrdenSerializer(serializers.ModelSerializer):
+    items=Orden_n_ItemSerializer2(many=True,source='orden_n_item_set',read_only=True)
+    class Meta:
+        model=models.Orden
+        fields="__all__"
+

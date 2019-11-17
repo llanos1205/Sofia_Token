@@ -1,0 +1,3 @@
+Requirement already satisfied: djangorestframework-filters in ./myenv/lib/python3.7/site-packages (0.11.1)
+Requirement already satisfied: django-filter~=1.1 in ./myenv/lib/python3.7/site-packages (from djangorestframework-filters) (1.1.0)
+Requirement already satisfied: djangorestframework in ./myenv/lib/python3.7/site-packages (from djangorestframework-filters) (3.10.3)

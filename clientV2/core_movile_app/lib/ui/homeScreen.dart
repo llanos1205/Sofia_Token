@@ -1,79 +1,58 @@
-import 'package:flutter/foundation.dart';
+import 'package:core_movile_app/operations/getDataJango.dart';
 import 'package:flutter/material.dart';
 
-class Todo {
-  final String title;
-  final String description;
+import 'package:shared_preferences/shared_preferences.dart';
 
-  Todo(this.title, this.description);
-}
-
-void main() {
-  runApp(MaterialApp(
-    title: 'Home',
-    home: TodosScreen(
-      todos: List.generate(
-        20,
-        (i) => Todo(
-              'Todo $i',
-              'A description of what needs to be done for Todo $i',
-            ),
-      ),
-    ),
-  ));
-}
-
-class TodosScreen extends StatelessWidget {
-  final List<Todo> todos;
-
-  TodosScreen({Key key, @required this.todos}) : super(key: key);
-
+class HomeScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Todos'),
-      ),
-      body: ListView.builder(
-        itemCount: todos.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(todos[index].title),
-            // When a user taps the ListTile, navigate to the DetailScreen.
-            // Notice that you're not only creating a DetailScreen, you're
-            // also passing the current todo through to it.
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailScreen(todo: todos[index]),
-                ),
-              );
-            },
-          );
-        },
-      ),
-    );
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String myuser = "";
+  @override
+  void initState() {
+    super.initState();
+    _saveCurrentRoute("/HomeScreen");
   }
-}
 
-class DetailScreen extends StatelessWidget {
-  // Declare a field that holds the Todo.
-  final Todo todo;
-
-  // In the constructor, require a Todo.
-  DetailScreen({Key key, @required this.todo}) : super(key: key);
+  _saveCurrentRoute(String lastRoute) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    await preferences.setString('LastScreenRoute', lastRoute);
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Use the Todo to create the UI.
     return Scaffold(
       appBar: AppBar(
-        title: Text(todo.title),
+        title: Text('HOme Screen'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Text(todo.description),
+      body:  Container(
+        padding: EdgeInsets.all(32.0),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+       
+
+              Text(myuser),
+              new Expanded(
+                child: FutureBuilder(
+                  future: getItems(context),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return GridView.count(
+                        crossAxisCount: 2,
+                        children: snapshot.data,
+                      );
+                    } else {
+                      return CircularProgressIndicator();
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
