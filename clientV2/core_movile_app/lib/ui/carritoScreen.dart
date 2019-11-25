@@ -33,7 +33,7 @@ class _CarritoScreenState extends State<CarritoScreen> {
                             children: 
                             <Widget>[
                             Expanded(child:Text(item.item.nombre),),
-                            Expanded(child:Text(item.item.precio.toString()),),
+                            Expanded( child:Text(item.item.precio.toString()),),
                              Expanded(child:Text(item.cantidad.toString()),),
                             Expanded(child:Text((item.cantidad*item.item.precio).toString())),
          

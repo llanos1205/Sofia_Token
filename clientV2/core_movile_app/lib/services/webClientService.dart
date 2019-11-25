@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class WebClient {
   WebClient();
-  String urls = "http://192.168.92.27";
+  String urls = "http://192.168.92.23";
   String port = "8000";
   String setPath(String path) {
     return urls + ":" + port + path;
